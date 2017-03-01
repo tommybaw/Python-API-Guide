@@ -1,11 +1,16 @@
 # Python API Guide (and how it applies to RJMetrics)
-A repository containing scripts &amp; materials regarding APIs and the interaction with Python
+This repository contains:
+* Guides/videos on learning the terminal and API (GET, POST requests)
+* Learning everything about cURL and how to send and retrieve data
+* Using the terminal to interact with Python and RJMetrics
+* Exercises to practice interacting with APIs and Solutions
+
+* [PENDING] cron jobs
 
 ----
 ## 1. First, Learning about the Terminal and APIs
-### The terminal
-The following video provides basic terminal usage and how to use the command line
-https://www.youtube.com/watch?v=jDINUSK7rXE
+### a. The Terminal
+This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on terminal usage and how to use the command line
 
 Once completed, try completing the following quizzes. You may need to use Google to find some of the answers.
 
@@ -15,7 +20,7 @@ Once completed, try completing the following quizzes. You may need to use Google
 
 [Quiz 3](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix3.html)
 
-### An API Overview
+### b. An API Overview
 
 What is an API and what can you do with it? Review the following videos and guides to get a better understanding.
 
@@ -25,9 +30,9 @@ What is an API and what can you do with it? Review the following videos and guid
 
 [HTTP Methods: GET vs. POST](https://www.w3schools.com/tags/ref_httpmethods.asp)
 
-### Making cURL requests
+### c. Making cURL requests
 
-Now that you've learned about APIs, find out how to transfer data using a cURL command
+Now that you've learned about APIs, find out how to transfer data in the terminal using a cURL command
 
 [How to use the cURL command (youtube)](https://www.youtube.com/watch?v=WxUVU0b95Oc)
 
@@ -35,9 +40,11 @@ Now that you've learned about APIs, find out how to transfer data using a cURL c
 
 [cURL examples](https://www.rosehosting.com/blog/curl-command-examples/)
 
-### Making API requests
+### d. Making API requests
 
-[Pythong Guide on Requests](http://docs.python-requests.org/en/master/)
+Here's a brief introduction to Python
+
+[Python Guide on Requests](http://docs.python-requests.org/en/master/)
 
 [Coding with Python, API basics to grab data (youtube)](https://www.youtube.com/watch?v=pxofwuWTs7c)
 
@@ -49,23 +56,22 @@ Now that you've learned about APIs, find out how to transfer data using a cURL c
 ### Homework 1
 
 **Part one:**
-Check out the Open Philly Indego Bikes API. 
+Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations). 
 Get a sense of what it does. 
 
 Then try the following:
 
+**1. Make a single request to the API**
+
 ```
+#Libraries used
 import requests
 import json
 import urllib2
 import pandas as pd
 import zipfile
 from StringIO import StringIO
-```
 
-**1. Make a single request to the API**
-
-```
 url = 'https://api.phila.gov/bike-share-stations/v1'
 
 headers = requests.utils.default_headers()
