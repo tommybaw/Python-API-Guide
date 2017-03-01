@@ -1,9 +1,11 @@
 # Python API Guide (and how it applies to RJMetrics)
 This repository contains:
 * Guides/videos on learning the terminal and API (GET, POST requests)
-* Learning everything about cURL and how to send and retrieve data
+* Learning about cURL and how to send/retrieve data
 * Using the terminal to interact with Python and RJMetrics
-* Exercises to practice interacting with APIs and Solutions
+* Exercises on exporting data from APIs and an RJMetrics dashboard
+* Exercises on importing data into RJMetrics using APIs
+
 
 * [PENDING] cron jobs
 
@@ -51,7 +53,7 @@ Here's a brief introduction to Python
 [Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ----
-## 2. Time for Exercises
+## 2. Exercises
 
 ### Homework 1
 
@@ -102,14 +104,14 @@ Check out the export API [support docs](https://support.rjmetrics.com/hc/en-us/a
      
 **1. Export a specific report (in RJMetrics); save the contents to a .txt file**
 
-**In Terminal**
+*In Terminal*
 ```
 curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure_id*/export -o "part2.txt"
 ```
 
-**2. Export a .csv through a raw data export**
+**2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
 
-**In Python**
+*In Python*
 ```
 url1 = 'https://api.rjmetrics.com/0.1/export/117749'
 
@@ -123,41 +125,97 @@ zip = zipfile.ZipFile('example.zip')
 zip.extractall()
 ```
 
-**In Terminal**
+*In Terminal*
 ```
 curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/export/*table_id* > "part2-1.zip"
 unzip part2-1.zip
 ```
 
 
-Note: You'll need to create a report and a raw data export to be able to do this. You cannot use a tabular report.
+*Note: You'll need to create a report and a raw data export to be able to do this. You cannot use a tabular report.*
 
-This will require some googling to understand. I please ask that you try to understand what you're doing along the way, and not just copy and paste indiscriminately.
+This will require some googling to understand. Try to understand what you're doing along the way, and not just copy and paste indiscriminately.
 
-Good luck 
+Good luck!
 
 ### Homework 2
+
+## Using the Import API
+
+
+Now that you know how to export data, now try importing into RJMetrics. You can reference this python [article](http://docs.python-requests.org/en/master/user/quickstart/).
+
+Also, read this [Developers Article](http://developers.rjmetrics.com/cloudbi/api.html) as well as this [Help Center Article](https://support.rjmetrics.com/hc/en-us/articles/204674775-Using-the-CloudBI-Import-API) for details on how to get authenticated with the Data Import API.
+
+For this exercise, try importing only one line of data such as:
+
+```
+data = {
+  "keys": ["id"],
+  "id": 1,
+  "email": "joe@schmo.com",
+  "status": "pending",
+  "created_at": "2012-08-01 14:22:32"
+}
+```
+
+*In Python*
+```
+url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
+
+h = {'Content-type': 'application/json'}
+response1 = requests.post(url, headers = h, json=data)
+print response1.content
+```
+
+
+
+
+
+
+### Homework 3
 
 **Part one:**
 Send multiple records to the RJMetrics API using a for loop.
 For example, something like this:
 
-> [{
->  "keys": ["id"],
->  "id": 1,
->  "email": "joe@schmo.com",
->  "status": "pending",
->  "created_at": "2012-08-01 14:22:32"
-> },{
->  "keys": ["id"],
->  "id": 2,
->  "email": "anne@schmo.com",
->  "status": "pending",
->  "created_at": "2012-08-03 23:12:30"
-> },{
->  "keys": ["id"],
->  "id": 1,
->  "email": "joe@schmo.com",
->  "status": "complete",
->  "created_at": "2012-08-05 04:51:02"
-> }]
+```
+data1 = [{
+#   "keys": ["id"],
+  "id": 1,
+  "email": "joe@schmo.com",
+  "status": "pending",
+  "created_at": "2012-08-01 14:22:32"
+},{
+  "id": 2,
+  "email": "anne@schmo.com",
+  "status": "pending",
+  "created_at": "2012-08-03 23:12:30"
+},{
+  "id": 1,
+  "email": "joe@schmo.com",
+  "status": "complete",
+  "created_at": "2012-08-05 04:51:02"
+}]
+```
+
+*In Python*
+```
+url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
+
+h = {'Content-type': 'application/json'}
+
+for i in data1:
+    i.update({"keys": ["id"]})
+    response = requests.post(url, headers = h, json=i)
+    print response.content
+print data1
+```
+
+
+
+
+
+
+
+
