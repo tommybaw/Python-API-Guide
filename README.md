@@ -3,7 +3,7 @@ A repository containing scripts &amp; materials regarding APIs and the interacti
 
 ----
 ## 1. First, Learning about the Terminal and APIs
-### Learning the terminal
+### The terminal
 The following video provides basic terminal usage and how to use the command line
 https://www.youtube.com/watch?v=jDINUSK7rXE
 
