@@ -10,10 +10,10 @@ This repository contains:
 * [PENDING] cron jobs
 
 ----
-## 1. First, Learning about the Terminal and APIs
-### a. The Terminal
-This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on terminal usage and how to use the command line
+## Section 1: First, Learning about the Terminal and APIs
+### A. The Terminal
 
+This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on terminal usage and how to use the command line
 Once completed, try completing the following quizzes. You may need to use Google to find some of the answers.
 
 [Quiz 1](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix1.html)
@@ -22,7 +22,7 @@ Once completed, try completing the following quizzes. You may need to use Google
 
 [Quiz 3](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix3.html)
 
-### b. An API Overview
+### B. An API Overview
 
 What is an API and what can you do with it? Review the following videos and guides to get a better understanding.
 
@@ -32,7 +32,7 @@ What is an API and what can you do with it? Review the following videos and guid
 
 [HTTP Methods: GET vs. POST](https://www.w3schools.com/tags/ref_httpmethods.asp)
 
-### c. Making cURL requests
+### C. Making cURL requests
 
 Now that you've learned about APIs, find out how to transfer data in the terminal using a cURL command
 
@@ -42,7 +42,7 @@ Now that you've learned about APIs, find out how to transfer data in the termina
 
 [cURL examples](https://www.rosehosting.com/blog/curl-command-examples/)
 
-### d. Making API requests
+### D. Making API requests
 
 Here's a brief introduction to Python
 
@@ -53,7 +53,7 @@ Here's a brief introduction to Python
 [Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ----
-## 2. Exercises
+## Section 2: Exercises
 
 ### Homework 1
 
@@ -64,6 +64,7 @@ Get a sense of what it does.
 Then try the following:
 
 **1. Make a single request to the API**
+
 
 <details>
 <summary> *Answer* </summary>
@@ -90,14 +91,18 @@ response = requests.get(url, headers=headers)
 ```
 </details>
 
+
 **2. Save the output to a .txt file**
 
+<details>
+<summary> Answer </summary>
 ```
 mydata = json.loads(response.text)
 file = open("indego.txt", "w")  #to create an empty file?? "w" = writing
 file.write(json.dumps(mydata, indent=4)) #json formatting
 file.close()
 ```
+</details>
 
 **3. Format the output in a pretty json format (You should be able to do this with one line of code)**
 Reference the file.write command above
@@ -148,7 +153,7 @@ Good luck!
 
 ### Homework 2
 
-## Using the Import API
+#### Using the Import API
 
 
 Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
@@ -206,7 +211,8 @@ data1 = [{
 }]
 ```
 
-*In Python*
+<details>
+<summary> *Answer* </summary>
 ```
 url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
 
@@ -218,7 +224,7 @@ for i in data1:
     print response.content
 print data1
 ```
-
+</details>
 
 
 
