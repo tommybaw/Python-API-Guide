@@ -65,11 +65,14 @@ Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
 
-<indent>
+<details>
+<summary> *Hint* </summary>
+*Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
+</details>
+
 <details>
 <summary> *Answer* </summary>
 ```
-#Libraries used
 import requests
 import json
 import zipfile
@@ -87,7 +90,6 @@ print headers
 response = requests.get(url, headers=headers)
 ```
 </details>
-</indent>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
 
