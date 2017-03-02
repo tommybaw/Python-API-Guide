@@ -13,7 +13,7 @@ This repository contains:
 ## Section 1: First, Learning about the Terminal and APIs
 ### A. The Terminal
 
-This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on terminal usage and how to use the command line
+This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on how to navigate through the terminal  and how to use the command line.
 Once completed, try completing the following quizzes. You may need to use Google to find some of the answers.
 
 * [Quiz 1](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix1.html)
@@ -34,7 +34,7 @@ What is an API and what can you do with it? Review the following videos and guid
 
 ### C. Making cURL requests
 
-Now that you've learned about APIs, find out how to transfer data in the terminal using a cURL command
+Now that you've learned about APIs, find out how to transfer data in the terminal using a cURL command.
 
 * [How to use the cURL command (youtube)](https://www.youtube.com/watch?v=WxUVU0b95Oc)
 
@@ -50,7 +50,7 @@ Here's a brief introduction to Python
 
 * [Coding with Python, API basics to grab data (youtube)](https://www.youtube.com/watch?v=pxofwuWTs7c)
 
-* [Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
+* [More info on the Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ----
 # Section 2: Exercises
@@ -72,10 +72,7 @@ Then try the following:
 #Libraries used
 import requests
 import json
-import urllib2
-import pandas as pd
 import zipfile
-from StringIO import StringIO
 
 url = 'https://api.phila.gov/bike-share-stations/v1'
 
@@ -112,7 +109,7 @@ file.close()
 </details>
 
 **Part two:**
-Check out the export API [support docs](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) for RJMetrics.
+Check out the Help Center article on [export APIs](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) in RJMetrics and then try the following.
      
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Export a specific report (in RJMetrics); save the contents to a .txt file**
 
