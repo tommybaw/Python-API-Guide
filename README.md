@@ -53,9 +53,9 @@ Here's a brief introduction to Python
 * [Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ----
-## Section 2: Exercises
+# Section 2: Exercises
 
-### Homework 1
+## Homework 1
 
 **Part one:**
 Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations). 
@@ -155,7 +155,7 @@ This will require some googling to understand. Try to understand what you're doi
 
 Good luck!
 
-### Homework 2: Import API Exercise
+## Homework 2: Import API Exercise
 
 
 Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
@@ -187,7 +187,7 @@ print response1.content
 
 
 
-### Homework 3: Importing multiple records
+## Homework 3: Importing multiple records
 
 **Part one:**
 Send multiple records to the RJMetrics API using a for loop.
@@ -249,7 +249,7 @@ print data1
 </details>
 
 
-### Homework 4: Importing indegoBike data into RJMetrics
+## Homework 4: Importing indegoBike data into RJMetrics
 
 Now that you're comfortable using a for loop to import multiple lines of data, it's time to request and import real data. 
 
