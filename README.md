@@ -65,6 +65,8 @@ Then try the following:
 
 **1. Make a single request to the API**
 
+<details>
+<summary> *Answer* </summary>
 ```
 #Libraries used
 import requests
@@ -86,6 +88,7 @@ headers.update(
 print headers
 response = requests.get(url, headers=headers)
 ```
+</details>
 
 **2. Save the output to a .txt file**
 
@@ -104,14 +107,17 @@ Check out the export API [support docs](https://support.rjmetrics.com/hc/en-us/a
      
 **1. Export a specific report (in RJMetrics); save the contents to a .txt file**
 
-*In Terminal*
+<details>
+<summary>*Answer in Terminal*</summary>
 ```
 curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure_id*/export -o "part2.txt"
 ```
+</details>
 
 **2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
 
-*In Python*
+<details>
+<summary>*Answer in Python* </summary>
 ```
 url1 = 'https://api.rjmetrics.com/0.1/export/117749'
 
@@ -124,13 +130,15 @@ with open("example.zip", 'w') as f:
 zip = zipfile.ZipFile('example.zip')
 zip.extractall()
 ```
+</details>
 
-*In Terminal*
+<details> 
+<summary> *Answer in Terminal* </summary>
 ```
 curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/export/*table_id* > "part2-1.zip"
-unzip part2-1.zip
+unzip exercise2.zip
 ```
-
+</details>
 
 *Note: You'll need to create a report and a raw data export to be able to do this. You cannot use a tabular report.*
 
@@ -143,7 +151,7 @@ Good luck!
 ## Using the Import API
 
 
-Now that you know how to export data, now try importing into RJMetrics. You can reference this python [article](http://docs.python-requests.org/en/master/user/quickstart/).
+Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
 
 Also, read this [Developers Article](http://developers.rjmetrics.com/cloudbi/api.html) as well as this [Help Center Article](https://support.rjmetrics.com/hc/en-us/articles/204674775-Using-the-CloudBI-Import-API) for details on how to get authenticated with the Data Import API.
 
@@ -159,17 +167,16 @@ data = {
 }
 ```
 
-*In Python*
+<details> 
+  <summary>*Answer in Python* </summary>
 ```
 url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
 
 h = {'Content-type': 'application/json'}
 response1 = requests.post(url, headers = h, json=data)
-print response1.content
+print response1.content 
 ```
-
-
-
+</details>
 
 
 
