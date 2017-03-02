@@ -64,6 +64,7 @@ Get a sense of what it does.
 Then try the following:
 
 1. **Make a single request to the API**
+
 <details>
 <summary> *Answer* </summary>
 ```
@@ -88,6 +89,7 @@ print headers
 response = requests.get(url, headers=headers)
 ```
 </details>
+
 2. **Save the output to a .txt file**
 
 <details>
