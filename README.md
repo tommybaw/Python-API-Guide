@@ -16,41 +16,41 @@ This repository contains:
 This [video](https://www.youtube.com/watch?v=jDINUSK7rXE) provides basic knowledge on terminal usage and how to use the command line
 Once completed, try completing the following quizzes. You may need to use Google to find some of the answers.
 
-[Quiz 1](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix1.html)
+* [Quiz 1](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix1.html)
 
-[Quiz 2](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix2.html)
+* [Quiz 2](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix2.html)
 
-[Quiz 3](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix3.html)
+* [Quiz 3](http://www.ch.embnet.org/CoursEMBnet/Exercises/Quiz/quix3.html)
 
 ### B. An API Overview
 
 What is an API and what can you do with it? Review the following videos and guides to get a better understanding.
 
-[What is REST?](http://www.restapitutorial.com/lessons/whatisrest.html)
+* [What is REST?](http://www.restapitutorial.com/lessons/whatisrest.html)
 
-[REST API concepts and examples (youtube)](https://www.youtube.com/watch?v=7YcW25PHnAA)
+* [REST API concepts and examples (youtube)](https://www.youtube.com/watch?v=7YcW25PHnAA)
 
-[HTTP Methods: GET vs. POST](https://www.w3schools.com/tags/ref_httpmethods.asp)
+* [HTTP Methods: GET vs. POST](https://www.w3schools.com/tags/ref_httpmethods.asp)
 
 ### C. Making cURL requests
 
 Now that you've learned about APIs, find out how to transfer data in the terminal using a cURL command
 
-[How to use the cURL command (youtube)](https://www.youtube.com/watch?v=WxUVU0b95Oc)
+* [How to use the cURL command (youtube)](https://www.youtube.com/watch?v=WxUVU0b95Oc)
 
-[An intro to cURL](https://gist.github.com/joyrexus/85bf6b02979d8a7b0308)
+* [An intro to cURL](https://gist.github.com/joyrexus/85bf6b02979d8a7b0308)
 
-[cURL examples](https://www.rosehosting.com/blog/curl-command-examples/)
+* [cURL examples](https://www.rosehosting.com/blog/curl-command-examples/)
 
 ### D. Making API requests
 
 Here's a brief introduction to Python
 
-[Python Guide on Requests](http://docs.python-requests.org/en/master/)
+* [Python Guide on Requests](http://docs.python-requests.org/en/master/)
 
-[Coding with Python, API basics to grab data (youtube)](https://www.youtube.com/watch?v=pxofwuWTs7c)
+* [Coding with Python, API basics to grab data (youtube)](https://www.youtube.com/watch?v=pxofwuWTs7c)
 
-[Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
+* [Python library: urllib2](https://docs.python.org/2/library/urllib2.html)
 
 ----
 ## Section 2: Exercises
@@ -63,9 +63,7 @@ Get a sense of what it does.
 
 Then try the following:
 
-**1. Make a single request to the API**
-
-
+1. **Make a single request to the API**
 <details>
 <summary> *Answer* </summary>
 ```
@@ -90,9 +88,7 @@ print headers
 response = requests.get(url, headers=headers)
 ```
 </details>
-
-
-**2. Save the output to a .txt file**
+2. **Save the output to a .txt file**
 
 <details>
 <summary> Answer </summary>
@@ -103,8 +99,7 @@ file.write(json.dumps(mydata, indent=4)) #json formatting
 file.close()
 ```
 </details>
-
-**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
+3. **Format the output in a pretty json format (You should be able to do this with one line of code)**
 Reference the file.write command above
 
 **Part two:**
