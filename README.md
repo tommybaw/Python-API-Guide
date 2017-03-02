@@ -63,8 +63,9 @@ Get a sense of what it does.
 
 Then try the following:
 
-1. **Make a single request to the API**
+**1. Make a single request to the API**
 
+<indent>
 <details>
 <summary> *Answer* </summary>
 ```
@@ -89,8 +90,9 @@ print headers
 response = requests.get(url, headers=headers)
 ```
 </details>
+</indent>
 
-2. **Save the output to a .txt file**
+**2. Save the output to a .txt file**
 
 <details>
 <summary> Answer </summary>
@@ -101,8 +103,13 @@ file.write(json.dumps(mydata, indent=4)) #json formatting
 file.close()
 ```
 </details>
-3. **Format the output in a pretty json format (You should be able to do this with one line of code)**
-Reference the file.write command above
+
+**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
+
+<details>
+<summary> *Answer* </summary>
+*Reference the file.write command above*
+</details>
 
 **Part two:**
 Check out the export API [support docs](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) for RJMetrics.
@@ -256,3 +263,10 @@ This will take you more time than previous assignments
 
 
 
+
+
+
+
+### Homework 5: Adding cron jobs
+
+# [PENDING]!
