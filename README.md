@@ -63,7 +63,7 @@ Get a sense of what it does.
 
 Then try the following:
 
-**1. Make a single request to the API**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
 
 <indent>
 <details>
@@ -92,7 +92,7 @@ response = requests.get(url, headers=headers)
 </details>
 </indent>
 
-**2. Save the output to a .txt file**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
 
 <details>
 <summary> Answer </summary>
@@ -104,7 +104,7 @@ file.close()
 ```
 </details>
 
-**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
 
 <details>
 <summary> *Answer* </summary>
@@ -114,7 +114,7 @@ file.close()
 **Part two:**
 Check out the export API [support docs](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) for RJMetrics.
      
-**1. Export a specific report (in RJMetrics); save the contents to a .txt file**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Export a specific report (in RJMetrics); save the contents to a .txt file**
 
 <details>
 <summary>*Answer in Terminal*</summary>
@@ -123,7 +123,7 @@ curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure
 ```
 </details>
 
-**2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
 
 <details>
 <summary>*Answer in Python* </summary>
@@ -155,6 +155,7 @@ This will require some googling to understand. Try to understand what you're doi
 
 Good luck!
 
+----
 ## Homework 2: Import API Exercise
 
 
@@ -186,10 +187,9 @@ print response1.content
 </details>
 
 
-
+----
 ## Homework 3: Importing multiple records
 
-**Part one:**
 Send multiple records to the RJMetrics API using a for loop.
 For example, something like this:
 
@@ -248,7 +248,7 @@ print data1
 ```
 </details>
 
-
+----
 ## Homework 4: Importing indegoBike data into RJMetrics
 
 Now that you're comfortable using a for loop to import multiple lines of data, it's time to request and import real data. 
@@ -266,7 +266,7 @@ This will take you more time than previous assignments
 
 
 
-
+----
 ### Homework 5: Adding cron jobs
 
 # [PENDING]!
