@@ -151,9 +151,7 @@ This will require some googling to understand. Try to understand what you're doi
 
 Good luck!
 
-### Homework 2
-
-#### Using the Import API
+### Homework 2: Import API Exercise
 
 
 Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
@@ -185,7 +183,7 @@ print response1.content
 
 
 
-### Homework 3
+### Homework 3: Importing multiple records
 
 **Part one:**
 Send multiple records to the RJMetrics API using a for loop.
@@ -214,8 +212,28 @@ data1 = [{
 <details>
 <summary> *Answer* </summary>
 ```
-url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
+import requests
+import json
 
+data1 = [{
+#   "keys": ["id"],
+  "id": 1,
+  "email": "joe@schmo.com",
+  "status": "pending",
+  "created_at": "2012-08-01 14:22:32"
+},{
+  "id": 2,
+  "email": "anne@schmo.com",
+  "status": "pending",
+  "created_at": "2012-08-03 23:12:30"
+},{
+  "id": 1,
+  "email": "joe@schmo.com",
+  "status": "complete",
+  "created_at": "2012-08-05 04:51:02"
+}]
+
+url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
 h = {'Content-type': 'application/json'}
 
 for i in data1:
@@ -227,7 +245,16 @@ print data1
 </details>
 
 
+### Homework 4: Importing indegoBike data into RJMetrics
 
+Now that you're comfortable using a for loop to import multiple lines of data, it's time to request and import real data. 
+
+Task: 
+* Write a script which requests the [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
+ * The data contains several nests. We are only looking to import data contained in **properties**.
+* Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
+
+This will take you more time than previous assignments
 
 
 
