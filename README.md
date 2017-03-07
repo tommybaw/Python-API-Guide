@@ -156,6 +156,7 @@ Good luck!
 ----
 ## Homework 2: Import API Exercise
 
+**Task:**
 
 Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
 
@@ -187,6 +188,10 @@ print response1.content
 
 ----
 ## Homework 3: Importing multiple records
+
+You now know how to send one data point. How do you send more than that?
+
+**Task:**
 
 Send multiple records to the RJMetrics API using a for loop.
 For example, something like this:
@@ -251,7 +256,8 @@ print data1
 
 Now that you're comfortable using a for loop to import multiple lines of data, it's time to request and import real data. 
 
-Task: 
+**Task:** 
+
 * Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
  * The data contains several nests. We are only looking to import data contained in **properties**.
 * Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
@@ -318,7 +324,8 @@ print json.dumps(d1, indent = 4) # Prints in json format
 What if you wanted to complete the task of Homework 4 at each hour of the day?
 This is where you will need to set up a cron job
 
-Task:
+**Task:**
+
 Find out more about cron jobs on Google and set one up through the terminal
 Have it run at each hour
 
@@ -331,7 +338,8 @@ A raw data export is useful for clients as they can view data in RJMetrics as a 
 
 We've already learned how to export an exisiting raw data export using the export API. Can you figure out how to generate 'fresh exports' using the export API? Use the current [Help Center article](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) for clues.
 
-Task:
+**Task:**
+
 * Create an initial data export in the front end
 * Send a POST request to the export API to generate an updated copy of the initial data export
 * Send a GET request which sends back the updated export's export_id
