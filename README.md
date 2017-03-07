@@ -256,14 +256,56 @@ Task:
 * Write a script which requests the [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
  * The data contains several nests. We are only looking to import data contained in **properties**.
 * Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
+* Import the data into RJMetrics as a new table
 
 This will take you more time than previous assignments
 
 
+<details>
+<summary> *Answer* </summary>
+```
+import requests
+import json
+from datetime import datetime
+
+# Requesting indego data
+url = 'https://www.rideindego.com/stations/json/'
+
+headers = requests.utils.default_headers()
+
+headers.update(
+    {
+        'User-Agent': 'Random User',
+    }
+)
+response = requests.get(url, headers=headers)
+mydata = json.loads(response.text)
+
+# Parsing out only the Properties category, appending list to d1
+d1 = []
+for x in mydata['features']:
+    d1.append((x['properties']))
+    
+    
+# Specifying import location
+clientid = 'ENTER CLIENT ID HERE'
+akey = 'ENTER API KEY HERE'
+tablename = 'ENTER TABLE NAME HERE'
+
+rjurl = 'https://connect.rjmetrics.com/v2/client/' +  clientid + '/table/' + tablename + '/data?apikey=' + akey
+
+h = {'Content-type': 'application/json'}
 
 
+# Importing bike data into RJMetrics
+for i in d1:
+    i.update({"timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) # Adding timestamp column
+    i.update({"keys": ["kioskId","timestamp"]}) # This is the primary key
+    response = requests.post(rjurl, headers = h, json=i)
+    print response.content # Prints data for each bike station (to confirm loop works correctly)
 
-
+print json.dumps(d1, indent = 4) # Prints in json format
+</details>
 
 ----
 ### Homework 5: Adding cron jobs
