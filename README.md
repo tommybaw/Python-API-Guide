@@ -5,9 +5,8 @@ This repository contains:
 * Using the terminal to interact with Python and RJMetrics
 * Exercises on exporting data from APIs and an RJMetrics dashboard
 * Exercises on importing data into RJMetrics using APIs
-
-
-* [PENDING] cron jobs
+* Creating cron jobs to automate python scripts
+* Generating updated raw data exports & requesting new data through python
 
 ----
 ## Section 1: First, Learning about the Terminal and APIs
@@ -253,13 +252,17 @@ print data1
 Now that you're comfortable using a for loop to import multiple lines of data, it's time to request and import real data. 
 
 Task: 
-* Write a script which requests the [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
+* Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
  * The data contains several nests. We are only looking to import data contained in **properties**.
 * Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
 * Import the data into RJMetrics as a new table
 
 This will take you more time than previous assignments
 
+<details>
+<summary> *Hint* </summary>
+For the third bullet, you will need to set a primary key. Will any of the columns work?
+</details>
 
 <details>
 <summary> *Answer* </summary>
@@ -292,6 +295,7 @@ clientid = 'ENTER CLIENT ID HERE'
 akey = 'ENTER API KEY HERE'
 tablename = 'ENTER TABLE NAME HERE'
 
+
 rjurl = 'https://connect.rjmetrics.com/v2/client/' +  clientid + '/table/' + tablename + '/data?apikey=' + akey
 
 h = {'Content-type': 'application/json'}
@@ -305,9 +309,34 @@ for i in d1:
     print response.content # Prints data for each bike station (to confirm loop works correctly)
 
 print json.dumps(d1, indent = 4) # Prints in json format
+```
 </details>
 
 ----
-### Homework 5: Adding cron jobs
+### Homework 5: Adding a cron job
 
-# [PENDING]!
+What if you wanted to complete the task of Homework 4 at each hour of the day?
+This is where you will need to set up a cron job
+
+Task:
+Find out more about cron jobs on Google and set one up through the terminal
+Have it run at each hour
+
+*Note: This will not work if you've been using a notebook style editor such as Jupyter Notebooks. You will need to execute python files (.py) through the terminal.*
+
+----
+### Homework 6: Generating fresh reports
+
+A raw data export is useful for clients as they can view data in RJMetrics as a .csv. The issue is that a raw export only takes a snapshot of the table based on when the export was created. 
+
+We've already learned how to export an exisiting raw data export using the export API. Can you figure out how to generate 'fresh exports' using the export API? Use the current [Help Center article](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) for clues.
+
+Task:
+* Create an initial data export in the front end
+* Send a POST request to the export API to generate an updated copy of the initial data export
+* Send a GET request which sends back the updated export's export_id
+* Send a POST request containing the new export_id and download the zip file
+
+
+
+
