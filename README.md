@@ -313,7 +313,7 @@ print json.dumps(d1, indent = 4) # Prints in json format
 </details>
 
 ----
-### Homework 5: Adding a cron job
+## Homework 5: Adding a cron job
 
 What if you wanted to complete the task of Homework 4 at each hour of the day?
 This is where you will need to set up a cron job
@@ -325,7 +325,7 @@ Have it run at each hour
 *Note: This will not work if you've been using a notebook style editor such as Jupyter Notebooks. You will need to execute python files (.py) through the terminal.*
 
 ----
-### Homework 6: Generating fresh reports
+## Homework 6: Generating fresh reports
 
 A raw data export is useful for clients as they can view data in RJMetrics as a .csv. The issue is that a raw export only takes a snapshot of the table based on when the export was created. 
 
