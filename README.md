@@ -372,17 +372,21 @@ h = {'X-RJM-API-Key': apikey}
 data = {'name': exportname}
 
 response2 = requests.post(url, headers=h, data = data)
+```
 </details>
 
 <details>
 <summary> *Answer: Part Three* </summary>
+```
 newid = json.loads(response2.content)
 
 print "New Export ID: " + str(newid['export_id'])
+```
 </details>
 
 <details>
 <summary> *Answer, to Note on delay* </summary>
+```
 # Loop to wait for new Export ID to generate
 status = ''
 while status != 'Completed':
@@ -390,10 +394,12 @@ while status != 'Completed':
 	time.sleep(5)
 	info = requests.get('https://api.rjmetrics.com/0.1/export/' + str(newid['export_id']) + '/info', headers = h)
 	status = json.loads(info.content)['status']
+```
 </details>
 
 <details>
 <summary> *Answer: Part Four* </summary>
+```
 # Requesting new information and saving zip
 url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
 
