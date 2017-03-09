@@ -2,12 +2,19 @@
 This repository contains:
 
 1. Guides/videos on learning the terminal and API (GET, POST requests)
+
 2. Learning about cURL and how to send/retrieve data
+
 3. Using the terminal to interact with Python and RJMetrics
+
 4. Exercises on exporting data from APIs and an RJMetrics dashboard
+
 5. Exercises on importing data into RJMetrics using APIs
+
 6. Creating cron jobs to automate python scripts
+
 7. Generating updated raw data exports & requesting new data through python
+
 8. Load the generated report (which is a .csv) back into python and transform into a json format
 
 ----
