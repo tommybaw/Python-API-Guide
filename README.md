@@ -1,12 +1,14 @@
 # Python API Guide (and how it applies to RJMetrics)
 This repository contains:
-* Guides/videos on learning the terminal and API (GET, POST requests)
-* Learning about cURL and how to send/retrieve data
-* Using the terminal to interact with Python and RJMetrics
-* Exercises on exporting data from APIs and an RJMetrics dashboard
-* Exercises on importing data into RJMetrics using APIs
-* Creating cron jobs to automate python scripts
-* Generating updated raw data exports & requesting new data through python
+
+1. Guides/videos on learning the terminal and API (GET, POST requests)
+2. Learning about cURL and how to send/retrieve data
+3. Using the terminal to interact with Python and RJMetrics
+4. Exercises on exporting data from APIs and an RJMetrics dashboard
+5. Exercises on importing data into RJMetrics using APIs
+6. Creating cron jobs to automate python scripts
+7. Generating updated raw data exports & requesting new data through python
+8. Load the generated report (which is a .csv) back into python and transform into a json format
 
 ----
 ## Section 1: First, Learning about the Terminal and APIs
@@ -340,11 +342,70 @@ We've already learned how to export an exisiting raw data export using the expor
 
 **Task:**
 
-* Create an initial data export in the front end
-* Send a POST request to the export API to generate an updated copy of the initial data export
-* Send a GET request which sends back the updated export's export_id
-* Send a POST request containing the new export_id and download the zip file
+* **Part One:** Create an initial data export in the front end
+* **Part Two:** Send a POST request to the export API to generate an updated copy of the initial data export
+* **Part Three:** Obtain the updated export's export_id
+* **Part Four** Send a POST request containing the new export_id and download the zip file
 
+*Note: There may be a delay for the newly created export ID to generate. How do you account for this when trying to complete this assignment in one python file?*
 
+*Your code should work seemlessly after entering the intial table id*
+
+<details>
+<summary> *Answer, Part One && Two* </summary>
+```
+import requests
+import json
+import zipfile
+import time
+
+# Fill in following criteria
+tableid = 'INSERT TABLE ID HERE'
+exportname = 'INSERT EXPORT NAME HERE'
+apikey = 'INSERT API KEY HERE'
+
+# Send POST request to existing Raw Data Export
+# Generates new Export with new Table ID
+# Prints new Table ID
+url = 'https://api.rjmetrics.com/0.1/export/' + tableid + '/copy'
+h = {'X-RJM-API-Key': apikey}
+data = {'name': exportname}
+
+response2 = requests.post(url, headers=h, data = data)
+</details>
+
+<details>
+<summary> *Answer: Part Three* </summary>
+newid = json.loads(response2.content)
+
+print "New Export ID: " + str(newid['export_id'])
+</details>
+
+<details>
+<summary> *Answer, to Note on delay* </summary>
+# Loop to wait for new Export ID to generate
+status = ''
+while status != 'Completed':
+	print 'Waiting for Raw Data Export to load.'
+	time.sleep(5)
+	info = requests.get('https://api.rjmetrics.com/0.1/export/' + str(newid['export_id']) + '/info', headers = h)
+	status = json.loads(info.content)['status']
+</details>
+
+<details>
+<summary> *Answer: Part Four* </summary>
+# Requesting new information and saving zip
+url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
+
+h = {'X-RJM-API-Key': apikey}
+response1 = requests.get(url3, headers=h)
+print "Response Code: " + str(response1.status_code)
+
+with open("log.zip", 'w') as f:
+    f.write(response1.content)
+zip = zipfile.ZipFile('log.zip')
+zip.extractall()
+```
+</details>
 
 
