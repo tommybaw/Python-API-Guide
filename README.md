@@ -422,7 +422,7 @@ zip.extractall()
 ```
 </details>
 
-
+----
 ## Homework 7: Continuation of Homework 6
 
 Now that you have downloaded the new export as a zip and extracted the csv, write a script that imports the csv into python and transform it into a JSON format.
