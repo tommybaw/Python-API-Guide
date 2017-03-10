@@ -1,4 +1,4 @@
-# Python API Guide (and how it applies to RJMetrics)
+# Python API Guide (and how it applies to Magento BI)
 This repository contains:
 
 1. Guides/videos on learning the terminal and API (GET, POST requests)
