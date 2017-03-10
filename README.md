@@ -1,4 +1,5 @@
 # Python API Guide (and how it applies to Magento BI)
+----
 ## Table of Contents
 **This repository contains:**
 
