@@ -1,4 +1,5 @@
 # Python API Guide (and how it applies to Magento BI)
+## Table of Contents
 This repository contains:
 
 1. Guides/videos on learning the terminal and API (GET, POST requests)
@@ -422,3 +423,61 @@ zip.extractall()
 </details>
 
 
+## Homework 7: Continuation of Homework 6
+
+Now that you have downloaded the new export as a zip and extracted the csv, write a script that imports the csv into python and transform it into a JSON format.
+
+*The application here is streamlining a way for clients to extract data out of Magento BI into another integration they use.*
+
+<details>
+<summary> *Answer* </summary>
+```
+import csv
+
+# Fill in following criteria
+
+clientid = 'INSERT CLIENT ID HERE'
+apikey = 'INSERT API KEY HERE'
+exportname = 'INSERT EXPORT NAME HERE'
+primarykey = 'ENTER THE PRIMARY KEY OF THE TABLE HERE'
+tablename = 'ENTER NAME OF THE NEW TABLE NAME'
+
+arr = []
+
+with open(exportname + '.csv') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        arr.append(row)
+     
+        
+jsonText = json.dumps(arr, indent = 4)
+print jsonText # To make sure the data is in the correct JSON format
+
+
+# Posting the data into an API. We use RJMetrics here as an example.
+posturl = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tablename + '/data?apikey=' + apikey
+
+h = {'Content-type': 'application/json'}
+
+for i in arr:
+    i.update({"keys": [clientid]})
+    response = requests.post(posturl, headers = h, json=i)
+    print response.content
+```
+</details>
+
+### Bonus:
+RJMetrics allows only up to 100 POST requests at a time. Can you come up with a way to send requests in batches?
+
+<details>
+<summary> *Answer* </summary>
+```
+for i in arr:
+    i.update({"keys": [primarykey]}) # Adds PK
+group = [arr[i:i+100] for i in range(0, len(arr), 100)] # Groups data in sets of 100
+
+for i in group: # Send POST request in batches of 100 records at a time
+    response = requests.post(posturl, headers = h, json=i)
+    print response.content
+```
+</details>
