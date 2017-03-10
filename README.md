@@ -1,6 +1,6 @@
 # Python API Guide (and how it applies to Magento BI)
 ## Table of Contents
-This repository contains:
+**This repository contains:**
 
 1. Guides/videos on learning the terminal and API (GET, POST requests)
 
@@ -467,7 +467,7 @@ for i in arr:
 </details>
 
 ### Bonus:
-RJMetrics allows only up to 100 POST requests at a time. Can you come up with a way to send requests in batches?
+Many integrations (RJMetrics included) place a cap on the maximum number of requests that can be sent at a time. Can you come up with a way to get around this by sending requests in batches?
 
 <details>
 <summary> *Answer* </summary>
