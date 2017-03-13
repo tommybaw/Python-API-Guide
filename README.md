@@ -137,9 +137,12 @@ curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure
 <details>
 <summary>*Answer in Python* </summary>
 ```
-url1 = 'https://api.rjmetrics.com/0.1/export/117749'
+exportid = 'INSERT EXPORT ID HERE'
+apikey = 'INSERT API KEY HERE'
 
-h = {'X-RJM-API-Key': '*Insert Generated Key*'}
+url1 = 'https://api.rjmetrics.com/0.1/export/' + exportid
+
+h = {'X-RJM-API-Key': apikey}
 response1 = requests.get(url1, headers=h)
 print response1      
 
@@ -188,7 +191,11 @@ data = {
 <details> 
   <summary>*Answer in Python* </summary>
 ```
-url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
+clientid = 'INSERT CLIENT ID HERE'
+tableid = 'INSERT TABLE ID HERE'
+apikey = 'INSERT API KEY HERE'
+
+url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
 response1 = requests.post(url, headers = h, json=data)
@@ -251,7 +258,12 @@ data1 = [{
   "created_at": "2012-08-05 04:51:02"
 }]
 
-url = 'https://connect.rjmetrics.com/v2/client/*client_id*/table/*table_name*/data?apikey=*your_key*'
+clientid = 'INSERT CLIENT ID HERE'
+tableid = 'INSERT TABLE ID HERE'
+apikey = 'INSERT API KEY HERE'
+
+url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
+
 h = {'Content-type': 'application/json'}
 
 for i in data1:
@@ -482,3 +494,7 @@ for i in group: # Send POST request in batches of 100 records at a time
     print response.content
 ```
 </details>
+
+----
+
+
