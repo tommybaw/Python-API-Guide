@@ -75,15 +75,13 @@ Get a sense of what it does.
 Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details> <summary> *Hint* </summary>
+&nbsp;<details> <summary> *Hint* </summary>
 ```
 *Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 ```
 </details>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details> <summary> *Answer* </summary>
+&nbsp;<details> <summary> *Answer* </summary>
 ```
 import requests
 import json
