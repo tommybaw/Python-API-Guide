@@ -189,7 +189,7 @@ data = {
 ```
 
 <details> 
-  <summary>*Answer in Python* </summary>
+  <summary>*Answer* </summary>
 ```
 clientid = 'INSERT CLIENT ID HERE'
 tableid = 'INSERT TABLE ID HERE'
