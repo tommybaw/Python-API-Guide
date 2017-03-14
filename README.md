@@ -68,7 +68,7 @@ Here's a brief introduction to Python
 ## Homework 1
 
 **Part one:**
-Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations). 
+Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations)
 
 Get a sense of what it does. 
 
@@ -78,7 +78,7 @@ Then try the following:
 
 
 <details>
-<summary>*Hint*</summary>
+<summary> *Hint* </summary>
 ```
 *Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 ```
