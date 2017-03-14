@@ -77,15 +77,13 @@ Then try the following:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
 
 
-<details>
-<summary> *Hint* </summary>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details> <summary> *Hint* </summary>
 ```
 *Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 ```
 </details>
 
-<details>
-<summary> *Answer* </summary>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<details> <summary> *Answer* </summary>
 ```
 import requests
 import json
@@ -109,7 +107,7 @@ response = requests.get(url, headers=headers)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
 
 <details>
-<summary> *Answer* </summary>
+ <summary> *Answer* </summary>
 ```
 mydata = json.loads(response.text)
 file = open("indego.txt", "w")  #to create an empty file?? "w" = writing
