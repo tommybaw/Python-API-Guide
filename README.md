@@ -69,15 +69,19 @@ Here's a brief introduction to Python
 
 **Part one:**
 Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations). 
+
 Get a sense of what it does. 
 
 Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
 
+
 <details>
-<summary> *Hint* </summary>
+<summary>*Hint*</summary>
+```
 *Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
+```
 </details>
 
 <details>
@@ -101,10 +105,11 @@ response = requests.get(url, headers=headers)
 ```
 </details>
 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
 
 <details>
-<summary> Answer </summary>
+<summary> *Answer* </summary>
 ```
 mydata = json.loads(response.text)
 file = open("indego.txt", "w")  #to create an empty file?? "w" = writing
@@ -189,7 +194,7 @@ data = {
 ```
 
 <details> 
-  <summary>*Answer* </summary>
+<summary>*Answer* </summary>
 ```
 clientid = 'INSERT CLIENT ID HERE'
 tableid = 'INSERT TABLE ID HERE'
