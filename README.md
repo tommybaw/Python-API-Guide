@@ -67,7 +67,7 @@ Here's a brief introduction to Python
 
 ## Homework 1
 
-**Part one:**
+### Part one:
 Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations)
 
 Get a sense of what it does. 
@@ -80,6 +80,7 @@ Then try the following:
 Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library
 
 </details>
+&nbsp;
 
 <details> <summary> Answer </summary>
 import requests
@@ -112,6 +113,7 @@ file.close()
 
 </details>
 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
 
 <details>
@@ -120,7 +122,7 @@ file.close()
 </details>
 
 
-**Part two:**
+### Part two:
 Check out the Help Center article on [export APIs](https://support.rjmetrics.com/hc/en-us/articles/204674465-Automating-data-retrieval-with-the-Data-Export-API) in RJMetrics and then try the following.
      
 
@@ -192,10 +194,12 @@ data = {
 ```
 
 <details> 
-<summary>*Answer* </summary>
-```
+<summary>Answer </summary>
+
 clientid = 'INSERT CLIENT ID HERE'
+
 tableid = 'INSERT TABLE ID HERE'
+
 apikey = 'INSERT API KEY HERE'
 
 url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
@@ -203,7 +207,7 @@ url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tablei
 h = {'Content-type': 'application/json'}
 response1 = requests.post(url, headers = h, json=data)
 print response1.content 
-```
+
 </details>
 
 
@@ -238,8 +242,7 @@ data1 = [{
 ```
 
 <details>
-<summary> *Answer* </summary>
-```
+<summary> Answer </summary>
 import requests
 import json
 
@@ -274,7 +277,6 @@ for i in data1:
     response = requests.post(url, headers = h, json=i)
     print response.content
 print data1
-```
 </details>
 
 ----
@@ -292,13 +294,12 @@ Now that you're comfortable using a for loop to import multiple lines of data, i
 This will take you more time than previous assignments
 
 <details>
-<summary> *Hint* </summary>
+<summary> Hint </summary>
 For the third bullet, you will need to set a primary key. Will any of the columns work?
 </details>
 
 <details>
-<summary> *Answer* </summary>
-```
+<summary> Answer </summary>
 import requests
 import json
 from datetime import datetime
@@ -341,7 +342,6 @@ for i in d1:
     print response.content # Prints data for each bike station (to confirm loop works correctly)
 
 print json.dumps(d1, indent = 4) # Prints in json format
-```
 </details>
 
 ----
@@ -376,8 +376,8 @@ We've already learned how to export an exisiting raw data export using the expor
 *Your code should work seemlessly after entering the intial table id*
 
 <details>
-<summary> *Answer, Part One && Two* </summary>
-```
+<summary> Answer, Part One && Two </summary>
+
 import requests
 import json
 import zipfile
@@ -396,21 +396,21 @@ h = {'X-RJM-API-Key': apikey}
 data = {'name': exportname}
 
 response2 = requests.post(url, headers=h, data = data)
-```
+
 </details>
 
 <details>
-<summary> *Answer, Part Three* </summary>
-```
+<summary> Answer, Part Three </summary>
+
 newid = json.loads(response2.content)
 
 print "New Export ID: " + str(newid['export_id'])
-```
+
 </details>
 
 <details>
-<summary> *Answer, to Note* </summary>
-```
+<summary> Answer, to Note </summary>
+
 # Loop to wait for new Export ID to generate
 status = ''
 while status != 'Completed':
@@ -418,12 +418,12 @@ while status != 'Completed':
 	time.sleep(5)
 	info = requests.get('https://api.rjmetrics.com/0.1/export/' + str(newid['export_id']) + '/info', headers = h)
 	status = json.loads(info.content)['status']
-```
+
 </details>
 
 <details>
-<summary> *Answer, Part Four* </summary>
-```
+<summary> Answer, Part Four </summary>
+
 # Requesting new information and saving zip
 url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
 
@@ -435,7 +435,7 @@ with open("log.zip", 'w') as f:
     f.write(response1.content)
 zip = zipfile.ZipFile('log.zip')
 zip.extractall()
-```
+
 </details>
 
 ----
@@ -446,8 +446,8 @@ Now that you have downloaded the new export as a zip and extracted the csv, writ
 *The application here is streamlining a way for clients to extract data out of Magento BI into another integration they use.*
 
 <details>
-<summary> *Answer* </summary>
-```
+<summary> Answer </summary>
+
 import csv
 
 # Fill in following criteria
@@ -479,15 +479,15 @@ for i in arr:
     i.update({"keys": [clientid]})
     response = requests.post(posturl, headers = h, json=i)
     print response.content
-```
+
 </details>
 
 ### Bonus:
 Many integrations (RJMetrics included) place a cap on the maximum number of requests that can be sent at a time. Can you come up with a way to get around this by sending requests in batches?
 
 <details>
-<summary> *Answer* </summary>
-```
+<summary> Answer </summary>
+
 for i in arr:
     i.update({"keys": [primarykey]}) # Adds PK
 group = [arr[i:i+100] for i in range(0, len(arr), 100)] # Groups data in sets of 100
@@ -495,7 +495,7 @@ group = [arr[i:i+100] for i in range(0, len(arr), 100)] # Groups data in sets of
 for i in group: # Send POST request in batches of 100 records at a time
     response = requests.post(posturl, headers = h, json=i)
     print response.content
-```
+
 </details>
 
 ----
