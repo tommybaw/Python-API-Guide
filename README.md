@@ -211,7 +211,7 @@ Many integrations (RJMetrics included) place a cap on the maximum number of requ
 ----
 ## Homework 8: Parsing data
 
-You should be pretty comfortable now exporting and importing data to/from APIs. Now try exporting a revenue report and extract the date and revenue values.
+You should be pretty comfortable now importing and exporting data to/from APIs. Now try exporting a revenue report and extract the date and revenue values.
 
 The final format of the extracted data should be in a list of dictionaries. 
 
