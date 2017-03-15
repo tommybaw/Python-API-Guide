@@ -167,16 +167,15 @@ for x in mydata['features']:
 
 ### Part Two && Three
 ```
-# Specifying import location
-clientid = 'ENTER CLIENT ID HERE'
-akey = 'ENTER API KEY HERE'
-tablename = 'ENTER TABLE NAME HERE'
+clientid = 'INSERT CLIENT ID HERE'
+akey = 'INSERT API KEY HERE'
+tablename = 'INSERT TABLE NAME HERE'
+```
 
-
+```
 rjurl = 'https://connect.rjmetrics.com/v2/client/' +  clientid + '/table/' + tablename + '/data?apikey=' + akey
 
 h = {'Content-type': 'application/json'}
-
 
 # Importing bike data into RJMetrics
 for i in d1:
@@ -264,8 +263,8 @@ import csv
 clientid = 'INSERT CLIENT ID HERE'
 apikey = 'INSERT API KEY HERE'
 exportname = 'INSERT EXPORT NAME HERE'
-primarykey = 'ENTER THE PRIMARY KEY OF THE TABLE HERE'
-tablename = 'ENTER NAME OF THE NEW TABLE NAME'
+primarykey = 'INSERT THE PRIMARY KEY OF THE TABLE HERE'
+tablename = 'INSERT NAME OF THE NEW TABLE NAME'
 ```
 
 ### Import csv into python
@@ -316,12 +315,14 @@ import zipfile
 import time
 ```
 
+```
+exportid = 'INSERT EXPORT ID HERE'
+apikey = 'INSERT API KEY HERE'
+exportname = 'INSERT EXPORT NAME HERE'
+```
+
 ### Refresh raw export, download and save to csv
 ```
-exportid = '119999'
-apikey = '049c7b7ced91878038365cca434fe22e'
-exportname = 'revenuereport'
-
 h = {'X-RJM-API-Key': apikey}
 data = {'name': exportname}
 
