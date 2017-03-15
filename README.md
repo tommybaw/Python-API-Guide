@@ -109,7 +109,7 @@ Also, read this [Developers Article](http://developers.rjmetrics.com/cloudbi/api
 
 For this exercise, try importing only one line of data such as:
 
-```
+```python
 data = {
   "keys": ["id"],
   "id": 1,
@@ -129,7 +129,7 @@ You now know how to send one data point. How do you send more than that?
 Send multiple records to the RJMetrics API using a for loop.
 For example, something like this:
 
-```
+```python
 data1 = [{
 #   "keys": ["id"],
   "id": 1,
@@ -213,5 +213,5 @@ Many integrations (RJMetrics included) place a cap on the maximum number of requ
 
 You should be pretty comfortable now importing and exporting data to/from APIs. Now try exporting a revenue report and extract the date and revenue values.
 
-The final format of the extracted data should be in a list of dictionaries. 
+*The final format of the extracted data should be as a list of dictionaries.*
 
