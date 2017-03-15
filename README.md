@@ -68,15 +68,13 @@ Here's a brief introduction to Python
 ## Homework 1
 
 ### Part one:
-Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations)
-
-Get a sense of what it does. 
+Check out the [Open Philly Indego Bikes API](https://www.opendataphilly.org/dataset/bike-share-stations) and get a sense of what it does. 
 
 Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
 
-*Hint: Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Hint: Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
@@ -93,43 +91,7 @@ Check out the Help Center article on [export APIs](https://support.rjmetrics.com
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Export a specific report (in RJMetrics); save the contents to a .txt file**
 
-<details>
-<summary>*Answer in Terminal*</summary>
-```
-curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure_id*/export -o "part2.txt"
-```
-</details>
-
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
-
-<details>
-<summary>Answer in Python </summary>
-
-exportid = 'INSERT EXPORT ID HERE'
-apikey = 'INSERT API KEY HERE'
-
-url1 = 'https://api.rjmetrics.com/0.1/export/' + exportid
-
-h = {'X-RJM-API-Key': apikey}
-response1 = requests.get(url1, headers=h)
-print response1      
-
-with open("example.zip", 'w') as f:
-    f.write(response1.content)
-zip = zipfile.ZipFile('example.zip')
-zip.extractall()
-
-</details>
-
-
-<details> 
-<summary> Answer in Terminal </summary>
-
-curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/export/*table_id* > "part2-1.zip"
-unzip exercise2.zip
-
-</details>
 
 *Note: You'll need to create a report and a raw data export to be able to do this. You cannot use a tabular report.*
 
