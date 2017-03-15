@@ -66,6 +66,7 @@ Here's a brief introduction to Python
 
 ----
 # Section 2: Exercises
+### Solutions are in a separate markdown file. Try not to peak without first attempting!
 
 ## Homework 1
 
@@ -78,11 +79,7 @@ Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Hint: Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
-
-
-
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
 
@@ -109,6 +106,7 @@ Now that you know how to export data, now try importing into RJMetrics. You can 
 Also, read this [Developers Article](http://developers.rjmetrics.com/cloudbi/api.html) as well as this [Help Center Article](https://support.rjmetrics.com/hc/en-us/articles/204674775-Using-the-CloudBI-Import-API) for details on how to get authenticated with the Data Import API.
 
 **Task:**
+
 For this exercise, try importing only one line of data such as:
 
 ```
@@ -165,12 +163,14 @@ Now that you're comfortable using a for loop to import multiple lines of data, i
 This will take you more time than previous assignments
 
 *Hint*
+
 For the third bullet, you will need to set a primary key. Will any of the columns work?
 
 ----
 ## Homework 5: Adding a cron job
 
 What if you wanted to complete the task of Homework 4 at each hour of the day?
+
 This is where you will need to set up a cron job
 
 **Task:**
