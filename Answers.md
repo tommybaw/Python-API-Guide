@@ -5,7 +5,7 @@
 
 ## Homework 1
 
-```
+```python
 import requests
 import json
 import zipfile
@@ -14,7 +14,7 @@ import zipfile
 ### Part one:
 
 **1. Make a single request to the API**
-```
+```python
 url = 'https://api.phila.gov/bike-share-stations/v1'
 
 headers = requests.utils.default_headers()
@@ -30,7 +30,7 @@ response = requests.get(url, headers=headers)
 
 **2. Save the output to a .txt file**
 
-```
+```python
 mydata = json.loads(response.text)
 file = open("indego.txt", "w")  #to create an empty file?? "w" = writing
 file.write(json.dumps(mydata, indent=4)) #json formatting
@@ -53,7 +53,7 @@ curl -H "X-RJM-API-Key: *your_key*" https://api.rjmetrics.com/0.1/figure/*figure
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Export a .csv through a raw data export (try doing this in both the terminal and python)**
 
 *Answer in Python*
-``` 
+``` python
 exportid = 'INSERT EXPORT ID HERE'
 apikey = 'INSERT API KEY HERE'
 
@@ -78,13 +78,13 @@ unzip exercise2.zip
 ----
 ## Homework 2: Import API Exercise
 
-```
+```python
 clientid = 'INSERT CLIENT ID HERE'
 tableid = 'INSERT TABLE ID HERE'
 apikey = 'INSERT API KEY HERE'
 ```
 
-```
+```python
 url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
@@ -95,18 +95,18 @@ print response1.content
 ----
 ## Homework 3: Importing multiple records
 
-```
+```python
 import requests
 import json
 ```
 
-```
+```python
 clientid = 'INSERT CLIENT ID HERE'
 tableid = 'INSERT TABLE ID HERE'
 apikey = 'INSERT API KEY HERE'
 ```
 
-```
+```python
 data1 = [{
 #   "keys": ["id"],
   "id": 1,
@@ -139,13 +139,13 @@ print data1
 ----
 ## Homework 4: Importing indegoBike data into RJMetrics
 
-```
+```python
 import requests
 import json
 ```
 
 ### Part One
-```
+```python
 # Requesting indego data
 url = 'https://www.rideindego.com/stations/json/'
 
@@ -166,13 +166,13 @@ for x in mydata['features']:
 ```
 
 ### Part Two && Three
-```
+```python
 clientid = 'INSERT CLIENT ID HERE'
 akey = 'INSERT API KEY HERE'
 tablename = 'INSERT TABLE NAME HERE'
 ```
 
-```
+```python
 rjurl = 'https://connect.rjmetrics.com/v2/client/' +  clientid + '/table/' + tablename + '/data?apikey=' + akey
 
 h = {'Content-type': 'application/json'}
@@ -194,7 +194,7 @@ print json.dumps(d1, indent = 4) # Prints in json format
 ----
 ## Homework 6: Generating fresh reports
 
-```
+```python
 import requests
 import json
 import zipfile
@@ -202,7 +202,7 @@ import time
 ```
 
 ### Part One && Two
-```
+```python
 tableid = 'INSERT TABLE ID HERE'
 exportname = 'INSERT EXPORT NAME HERE'
 apikey = 'INSERT API KEY HERE'
@@ -218,14 +218,14 @@ response2 = requests.post(url, headers=h, data = data)
 ```
 
 ### Part Three
-```
+```python
 newid = json.loads(response2.content)
 
 print "New Export ID: " + str(newid['export_id'])
 ```
 
 ### Answer to Note
-```
+```python
 # Loop to wait for new Export ID to generate
 status = ''
 while status != 'Completed':
@@ -236,7 +236,7 @@ while status != 'Completed':
 ```
 
 ### Part Four
-```
+```python
 # Requesting new information and saving zip
 url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
 
@@ -253,13 +253,13 @@ zip.extractall()
 ----
 ## Homework 7: Continuation of Homework 6
 
-```
+```python
 import requests
 import json
 import csv
 ```
 
-```
+```python
 clientid = 'INSERT CLIENT ID HERE'
 apikey = 'INSERT API KEY HERE'
 exportname = 'INSERT EXPORT NAME HERE'
@@ -268,7 +268,7 @@ tablename = 'INSERT NAME OF THE NEW TABLE NAME'
 ```
 
 ### Import csv into python
-```
+```python
 arr = []
 
 with open(exportname + '.csv') as f:
@@ -282,7 +282,7 @@ print jsonText # To make sure the data is in the correct JSON format
 ```
 
 ### Sending the data into an API. We use RJMetrics here as an example.
-```
+```python
 posturl = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tablename + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
@@ -294,7 +294,7 @@ for i in arr:
 ```
 
 ### Answer to Bonus:
-```
+```python
 for i in arr:
     i.update({"keys": [primarykey]}) # Adds PK
 group = [arr[i:i+100] for i in range(0, len(arr), 100)] # Groups data in sets of 100
@@ -307,7 +307,7 @@ for i in group: # Send POST request in batches
 ----
 ## Homework 8: Parsing data
 
-```
+```python
 import csv
 import requests
 import json
@@ -315,14 +315,14 @@ import zipfile
 import time
 ```
 
-```
+```python
 exportid = 'INSERT EXPORT ID HERE'
 apikey = 'INSERT API KEY HERE'
 exportname = 'INSERT EXPORT NAME HERE'
 ```
 
 ### Refresh raw export, download and save to csv
-```
+```python
 h = {'X-RJM-API-Key': apikey}
 data = {'name': exportname}
 
@@ -352,7 +352,7 @@ print 'Complete'
 ```
 
 ### Load back into python
-```
+```python
 arr = []
 
 with open(exportname + '.csv') as f:
@@ -362,7 +362,7 @@ with open(exportname + '.csv') as f:
 ```
 
 ### Parsing data for specific columns
-```
+```python
 columns = ['date', 'Customer\'s lifetime revenue']
 
 d0 = []
