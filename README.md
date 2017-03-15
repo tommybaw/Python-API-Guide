@@ -102,12 +102,11 @@ Good luck!
 ----
 ## Homework 2: Import API Exercise
 
-**Task:**
-
 Now that you know how to export data, now try importing into RJMetrics. You can reference this [python article](http://docs.python-requests.org/en/master/user/quickstart/).
 
 Also, read this [Developers Article](http://developers.rjmetrics.com/cloudbi/api.html) as well as this [Help Center Article](https://support.rjmetrics.com/hc/en-us/articles/204674775-Using-the-CloudBI-Import-API) for details on how to get authenticated with the Data Import API.
 
+**Task:**
 For this exercise, try importing only one line of data such as:
 
 ```
@@ -119,24 +118,6 @@ data = {
   "created_at": "2012-08-01 14:22:32"
 }
 ```
-
-<details> 
-<summary>Answer </summary>
-
-clientid = 'INSERT CLIENT ID HERE'
-
-tableid = 'INSERT TABLE ID HERE'
-
-apikey = 'INSERT API KEY HERE'
-
-url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
-
-h = {'Content-type': 'application/json'}
-response1 = requests.post(url, headers = h, json=data)
-print response1.content 
-
-</details>
-
 
 ----
 ## Homework 3: Importing multiple records
@@ -168,44 +149,6 @@ data1 = [{
 }]
 ```
 
-<details>
-<summary> Answer </summary>
-import requests
-import json
-
-data1 = [{
-#   "keys": ["id"],
-  "id": 1,
-  "email": "joe@schmo.com",
-  "status": "pending",
-  "created_at": "2012-08-01 14:22:32"
-},{
-  "id": 2,
-  "email": "anne@schmo.com",
-  "status": "pending",
-  "created_at": "2012-08-03 23:12:30"
-},{
-  "id": 1,
-  "email": "joe@schmo.com",
-  "status": "complete",
-  "created_at": "2012-08-05 04:51:02"
-}]
-
-clientid = 'INSERT CLIENT ID HERE'
-tableid = 'INSERT TABLE ID HERE'
-apikey = 'INSERT API KEY HERE'
-
-url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
-
-h = {'Content-type': 'application/json'}
-
-for i in data1:
-    i.update({"keys": ["id"]})
-    response = requests.post(url, headers = h, json=i)
-    print response.content
-print data1
-</details>
-
 ----
 ## Homework 4: Importing indegoBike data into RJMetrics
 
@@ -213,63 +156,15 @@ Now that you're comfortable using a for loop to import multiple lines of data, i
 
 **Task:** 
 
-* Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
+1. Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
  * The data contains several nests. We are only looking to import data contained in **properties**.
-* Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
-* Import the data into RJMetrics as a new table
+2. Import the data into RJMetrics as a new table
+3. Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
 
 This will take you more time than previous assignments
 
-<details>
-<summary> Hint </summary>
+*Hint*
 For the third bullet, you will need to set a primary key. Will any of the columns work?
-</details>
-
-<details>
-<summary> Answer </summary>
-import requests
-import json
-from datetime import datetime
-
-# Requesting indego data
-url = 'https://www.rideindego.com/stations/json/'
-
-headers = requests.utils.default_headers()
-
-headers.update(
-    {
-        'User-Agent': 'Random User',
-    }
-)
-response = requests.get(url, headers=headers)
-mydata = json.loads(response.text)
-
-# Parsing out only the Properties category, appending list to d1
-d1 = []
-for x in mydata['features']:
-    d1.append((x['properties']))
-    
-    
-# Specifying import location
-clientid = 'ENTER CLIENT ID HERE'
-akey = 'ENTER API KEY HERE'
-tablename = 'ENTER TABLE NAME HERE'
-
-
-rjurl = 'https://connect.rjmetrics.com/v2/client/' +  clientid + '/table/' + tablename + '/data?apikey=' + akey
-
-h = {'Content-type': 'application/json'}
-
-
-# Importing bike data into RJMetrics
-for i in d1:
-    i.update({"timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')}) # Adding timestamp column
-    i.update({"keys": ["kioskId","timestamp"]}) # This is the primary key
-    response = requests.post(rjurl, headers = h, json=i)
-    print response.content # Prints data for each bike station (to confirm loop works correctly)
-
-print json.dumps(d1, indent = 4) # Prints in json format
-</details>
 
 ----
 ## Homework 5: Adding a cron job
@@ -302,68 +197,7 @@ We've already learned how to export an exisiting raw data export using the expor
 
 *Your code should work seemlessly after entering the intial table id*
 
-<details>
-<summary> Answer, Part One && Two </summary>
 
-import requests
-import json
-import zipfile
-import time
-
-# Fill in following criteria
-tableid = 'INSERT TABLE ID HERE'
-exportname = 'INSERT EXPORT NAME HERE'
-apikey = 'INSERT API KEY HERE'
-
-# Send POST request to existing Raw Data Export
-# Generates new Export with new Table ID
-# Prints new Table ID
-url = 'https://api.rjmetrics.com/0.1/export/' + tableid + '/copy'
-h = {'X-RJM-API-Key': apikey}
-data = {'name': exportname}
-
-response2 = requests.post(url, headers=h, data = data)
-
-</details>
-
-<details>
-<summary> Answer, Part Three </summary>
-
-newid = json.loads(response2.content)
-
-print "New Export ID: " + str(newid['export_id'])
-
-</details>
-
-<details>
-<summary> Answer, to Note </summary>
-
-# Loop to wait for new Export ID to generate
-status = ''
-while status != 'Completed':
-	print 'Waiting for Raw Data Export to load.'
-	time.sleep(5)
-	info = requests.get('https://api.rjmetrics.com/0.1/export/' + str(newid['export_id']) + '/info', headers = h)
-	status = json.loads(info.content)['status']
-
-</details>
-
-<details>
-<summary> Answer, Part Four </summary>
-
-# Requesting new information and saving zip
-url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
-
-h = {'X-RJM-API-Key': apikey}
-response1 = requests.get(url3, headers=h)
-print "Response Code: " + str(response1.status_code)
-
-with open("log.zip", 'w') as f:
-    f.write(response1.content)
-zip = zipfile.ZipFile('log.zip')
-zip.extractall()
-
-</details>
 
 ----
 ## Homework 7: Continuation of Homework 6
