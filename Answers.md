@@ -5,14 +5,16 @@
 
 ## Homework 1
 
-### Part one:
-
-**1. Make a single request to the API**
 ```
 import requests
 import json
 import zipfile
+```
 
+### Part one:
+
+**1. Make a single request to the API**
+```
 url = 'https://api.phila.gov/bike-share-stations/v1'
 
 headers = requests.utils.default_headers()
