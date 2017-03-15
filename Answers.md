@@ -1,4 +1,4 @@
-# Answers to Homework
+# Answer to Exercises
 
 ----
 ----
@@ -80,7 +80,9 @@ unzip exercise2.zip
 clientid = 'INSERT CLIENT ID HERE'
 tableid = 'INSERT TABLE ID HERE'
 apikey = 'INSERT API KEY HERE'
+```
 
+```
 url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
@@ -94,7 +96,15 @@ print response1.content
 ```
 import requests
 import json
+```
 
+```
+clientid = 'INSERT CLIENT ID HERE'
+tableid = 'INSERT TABLE ID HERE'
+apikey = 'INSERT API KEY HERE'
+```
+
+```
 data1 = [{
 #   "keys": ["id"],
   "id": 1,
@@ -113,10 +123,6 @@ data1 = [{
   "created_at": "2012-08-05 04:51:02"
 }]
 
-clientid = 'INSERT CLIENT ID HERE'
-tableid = 'INSERT TABLE ID HERE'
-apikey = 'INSERT API KEY HERE'
-
 url = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tableid + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
@@ -131,12 +137,13 @@ print data1
 ----
 ## Homework 4: Importing indegoBike data into RJMetrics
 
-*Part One*
 ```
 import requests
 import json
-from datetime import datetime
+```
 
+### Part One
+```
 # Requesting indego data
 url = 'https://www.rideindego.com/stations/json/'
 
@@ -156,7 +163,7 @@ for x in mydata['features']:
     d1.append((x['properties']))
 ```
 
-*Part Two && Three*
+### Part Two && Three
 ```
 # Specifying import location
 clientid = 'ENTER CLIENT ID HERE'
@@ -186,14 +193,15 @@ print json.dumps(d1, indent = 4) # Prints in json format
 ----
 ## Homework 6: Generating fresh reports
 
-*Part One && Two*
 ```
 import requests
 import json
 import zipfile
 import time
+```
 
-# Fill in following criteria
+### Part One && Two
+```
 tableid = 'INSERT TABLE ID HERE'
 exportname = 'INSERT EXPORT NAME HERE'
 apikey = 'INSERT API KEY HERE'
@@ -208,14 +216,14 @@ data = {'name': exportname}
 response2 = requests.post(url, headers=h, data = data)
 ```
 
-*Part Three*
+### Part Three
 ```
 newid = json.loads(response2.content)
 
 print "New Export ID: " + str(newid['export_id'])
 ```
 
-*Answer to Note*
+### Answer to Note
 ```
 # Loop to wait for new Export ID to generate
 status = ''
@@ -226,7 +234,7 @@ while status != 'Completed':
 	status = json.loads(info.content)['status']
 ```
 
-*Part Four*
+### Part Four
 ```
 # Requesting new information and saving zip
 url3 = 'https://api.rjmetrics.com/0.1/export/' + str(newid['export_id'])
@@ -248,15 +256,18 @@ zip.extractall()
 import requests
 import json
 import csv
+```
 
-# Fill in following criteria
-
+```
 clientid = 'INSERT CLIENT ID HERE'
 apikey = 'INSERT API KEY HERE'
 exportname = 'INSERT EXPORT NAME HERE'
 primarykey = 'ENTER THE PRIMARY KEY OF THE TABLE HERE'
 tablename = 'ENTER NAME OF THE NEW TABLE NAME'
+```
 
+### Import csv into python
+```
 arr = []
 
 with open(exportname + '.csv') as f:
@@ -267,9 +278,10 @@ with open(exportname + '.csv') as f:
         
 jsonText = json.dumps(arr, indent = 4)
 print jsonText # To make sure the data is in the correct JSON format
+```
 
-
-# Posting the data into an API. We use RJMetrics here as an example.
+### Sending the data into an API. We use RJMetrics here as an example.
+```
 posturl = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tablename + '/data?apikey=' + apikey
 
 h = {'Content-type': 'application/json'}
@@ -280,7 +292,7 @@ for i in arr:
     print response.content
 ```
 
-*Answer to Bonus:*
+### Answer to Bonus:
 ```
 for i in arr:
     i.update({"keys": [primarykey]}) # Adds PK
