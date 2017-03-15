@@ -19,6 +19,8 @@
 
 8. Load the generated report (which is a .csv) back into python and transform into a json format
 
+9. Parse specific dimensions/columns from reports while keeping the same json format
+
 ----
 ## Section 1: First, Learning about the Terminal and APIs
 ### A. The Terminal
@@ -156,10 +158,9 @@ Now that you're comfortable using a for loop to import multiple lines of data, i
 
 **Task:** 
 
-1. Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API.
- * The data contains several nests. We are only looking to import data contained in **properties**.
-2. Import the data into RJMetrics as a new table
-3. Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
+* **Part One:** Write a script which requests [indegoBike](https://www.rideindego.com/stations/json/) data and post it to the RJMetrics API. *The data contains several nests. We are only looking to import data contained in **properties**.*
+* **Part Two:** Import the data into RJMetrics as a new table
+* **Part Three:** Amend the script to add the current timestamp to each record. e.g., "time": "2017-02-24 00:00:00"
 
 This will take you more time than previous assignments
 
@@ -195,9 +196,7 @@ We've already learned how to export an exisiting raw data export using the expor
 
 *Note: There may be a delay for the newly created export ID to generate. How do you account for this when trying to complete this assignment in one python file?*
 
-*Your code should work seemlessly after entering the intial table id*
-
-
+*Your code should work seemlessly after entering the intial table id (i.e. not having to insert the export id each execution)*
 
 ----
 ## Homework 7: Continuation of Homework 6
@@ -206,59 +205,13 @@ Now that you have downloaded the new export as a zip and extracted the csv, writ
 
 *The application here is streamlining a way for clients to extract data out of Magento BI into another integration they use.*
 
-<details>
-<summary> Answer </summary>
-
-import csv
-
-# Fill in following criteria
-
-clientid = 'INSERT CLIENT ID HERE'
-apikey = 'INSERT API KEY HERE'
-exportname = 'INSERT EXPORT NAME HERE'
-primarykey = 'ENTER THE PRIMARY KEY OF THE TABLE HERE'
-tablename = 'ENTER NAME OF THE NEW TABLE NAME'
-
-arr = []
-
-with open(exportname + '.csv') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        arr.append(row)
-     
-        
-jsonText = json.dumps(arr, indent = 4)
-print jsonText # To make sure the data is in the correct JSON format
-
-
-# Posting the data into an API. We use RJMetrics here as an example.
-posturl = 'https://connect.rjmetrics.com/v2/client/' + clientid + '/table/' + tablename + '/data?apikey=' + apikey
-
-h = {'Content-type': 'application/json'}
-
-for i in arr:
-    i.update({"keys": [clientid]})
-    response = requests.post(posturl, headers = h, json=i)
-    print response.content
-
-</details>
-
 ### Bonus:
 Many integrations (RJMetrics included) place a cap on the maximum number of requests that can be sent at a time. Can you come up with a way to get around this by sending requests in batches?
 
-<details>
-<summary> Answer </summary>
-
-for i in arr:
-    i.update({"keys": [primarykey]}) # Adds PK
-group = [arr[i:i+100] for i in range(0, len(arr), 100)] # Groups data in sets of 100
-
-for i in group: # Send POST request in batches of 100 records at a time
-    response = requests.post(posturl, headers = h, json=i)
-    print response.content
-
-</details>
-
 ----
+## Homework 8: Parsing data
 
+You should be pretty comfortable now exporting and importing data to/from APIs. Now try exporting a revenue report and extract the date and revenue values.
+
+The final format of the extracted data should be in a list of dictionaries. 
 
