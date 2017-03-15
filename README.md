@@ -75,51 +75,16 @@ Get a sense of what it does.
 Then try the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1. Make a single request to the API**
-<details> <summary> Hint </summary>
 
-Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library
-
-</details>
-&nbsp;
-
-<details> <summary> Answer </summary>
-import requests
-import json
-import zipfile
-
-url = 'https://api.phila.gov/bike-share-stations/v1'
-
-headers = requests.utils.default_headers()
-
-headers.update(
-    {
-        'User-Agent': 'Random User',
-    }
-)
-print headers
-response = requests.get(url, headers=headers)
-</details>
+*Hint: Use the [requests](http://docs.python-requests.org/en/master/user/quickstart/) library*
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2. Save the output to a .txt file**
 
-<details>
-<summary> Answer </summary>
 
-mydata = json.loads(response.text)
-file = open("indego.txt", "w")  #to create an empty file?? "w" = writing
-file.write(json.dumps(mydata, indent=4)) #json formatting
-file.close()
-
-</details>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3. Format the output in a pretty json format (You should be able to do this with one line of code)**
-
-<details>
-<summary> *Answer* </summary>
-*Reference the file.write command above*
-</details>
 
 
 ### Part two:
