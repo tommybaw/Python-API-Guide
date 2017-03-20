@@ -21,6 +21,8 @@
 
 9. Parse specific dimensions/columns from reports while keeping the same json format
 
+10. Forecast data on existing reports
+
 ----
 ## Section 1: First, Learning about the Terminal and APIs
 ### A. The Terminal
@@ -162,9 +164,7 @@ Now that you're comfortable using a for loop to import multiple lines of data, i
 
 This will take you more time than previous assignments
 
-*Hint*
-
-For the third bullet, you will need to set a primary key. Will any of the columns work?
+*Hint: For the third bullet, you will need to set a primary key. Will any of the columns work?*
 
 ----
 ## Homework 5: Adding a cron job
@@ -215,3 +215,9 @@ You should be pretty comfortable now importing and exporting data to/from APIs. 
 
 *The final format of the extracted data should be as a list of dictionaries.*
 
+----
+## Homework 9: Forecasting
+
+Export the same revenue report but this time don't use a raw export. Directly export the report into python and then use either R or Python to forecast the data.
+
+Then send it back to RJMetrics.
