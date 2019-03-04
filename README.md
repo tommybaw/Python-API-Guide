@@ -1,7 +1,7 @@
-# Python API Guide (and how it applies to Magento BI)
+# Python API Guide
 ----
 ## Table of Contents
-**This repository contains:**
+**This repository contains training material on becoming familiar with APIs and how to use it with Magento Business Intelligence's RESTful API:**
 
 1. Guides/videos on learning the terminal and API (GET, POST requests)
 
